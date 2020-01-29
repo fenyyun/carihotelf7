@@ -1,0 +1,168 @@
+<!-- Your main view, should have "view-main" class -->
+<div class="view view-init">
+  <!-- Initial Page, "data-name" contains page name -->
+  <div data-name="riwayat" class="page">
+    <div class="navbar color-theme-white">
+      <div class="navbar-inner">
+        <a href="#" class="back link"><i class="icon icon-back"></i></a>
+        <div class="title"><a>Riwayat</a></div>
+      </div>
+    </div>
+
+    <!-- Scrollable page content -->
+    <div class="page-content">
+      <div class="row">
+        <div class="col-100 medium-20"></div>
+        <div class="col-100 medium-60"> 
+         <div class="toolbar tabbar toolbar-bottom"> 
+        <div class="toolbar-inner"> 
+        <a href="#tab-1" class="tab-link tab-link-active">              
+             <i class="icon material-icons md-only">home</i>
+            <span class="tabbar-label">Home</span>
+          </a>
+      <a href="#tab-2" class="tab-link">
+        <i class="icon material-icons md-only">apartment</i>
+        <span class="tabbar-label">Hotel</span>
+      </a>
+      <a href="#tab-3" class="tab-link">
+        <i class="icon f7-icons if-not-md">money<span class="badge color-red">1</span></i>
+        <i class="icon material-icons md-only">hotel</i>
+        <span class="tabbar-label">Kamar</span>
+      </a>
+      <a href="#tab-4" class="tab-link">
+
+       
+        <i class="icon material-icons md-only">building_2_fill </i> 
+        <span class="tabbar-label">Resort</span>
+      </a>
+      <a href="#tab-5" class="tab-link">
+        
+        <i class="icon material-icons md-only">house_alt_fill</i>
+        <span class="tabbar-label">Motel</span>
+      </a>
+       <a href="#tab-6" class="tab-link">
+        
+        <i class="icon material-icons md-only">person</i>
+        <span class="tabbar-label">Resto</span>
+      </a>
+     </div> 
+   </div>  
+          <!-- <div class="menu">
+           <div class="block">
+             <div class="row">
+                  <div class="col"> <img class="tengah" src="icon/home.png"/></div>
+                  <div class="col"> <img class="tengah" src="icon/hotel.png"/></div>
+                  <div class="col"> <img class="tengah" src="icon/bed.png"/></div>
+                  <div class="col"> <img class="tengah" src="icon/resort.png"/></div>
+                  <div class="col"> <img class="tengah" src="icon/motel.png"/></div>
+                  <div class="col"> <img class="tengah" src="icon/eat.png"/></div>
+
+             </div>
+          </div>
+          </div> -->
+          <div class="list accordion-list">
+              <ul>
+                <li class="accordion-item"><a href="#" class="item-content item-link">
+                    <div class="item-inner">
+                      <div class="item-title" style="color: #f6c067;">Aktif Pemesanan</div>
+                    </div></a>
+                  <div class="accordion-item-content">
+                    <div class="block">
+                        <div class="card">
+                          <!-- <div class="card-content card-contentrder-padding"> -->
+                            <div class="teks">
+                              <div class="timeline-item-text">Order.Id</div>
+                            </div>
+                           <!-- <a class="link" href="path/to/somewhere">Order.id</a> -->
+                           <div class="timeline-item-time">Alamanda Hotel</div>
+                           <div class="timeline-item-text">14’guest and 24 room  
+                           </div>
+                           <div class="timeline-item-time">16 January 2020</div>
+                           <div class="timeline-item-time">Status Pemesanan:</div>
+                           <div class="list">
+                              <ul>
+                                <li>
+                                  <label class="item-radio item-content">
+                                    <input type="radio" name="demo-radio" value="Books" checked/>
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                      <div class="item-title">Sudah Check In</div>
+                                    </div>
+                                  </label>
+                                </li>
+                                <li>
+                                  <label class="item-radio item-content">
+                                    <input type="radio" name="demo-radio" value="Movies"/>
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                      <div class="item-title">Belum Check In</div>
+                                    </div>
+                                  </label>
+                                </li>
+                              </ul>
+                            </div>
+                          <!-- </div> -->
+                        </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list accordion-list">
+             <ul>
+              <li class="accordion-item">
+                <a href="#" class="item-content item-link">
+                  <div class="item-inner">
+                    <div class="item-title" style="color: #f6c067">Tampilkan Riwayat Pemesanan</div>
+                  </div>
+                </a>
+                <div class="accordion-item-content">
+                  <div class="block">
+                   <div class="card">
+                    <div class="list">
+                      <ul>
+                        <li>
+                          <a href="#" class="item-link item-content">
+                          <div class="item-inner">
+                            <div class="item-title">
+                              <div class="item-header"><strong>Nama</strong></div>
+                               John Doe
+                            </div>
+                            <div class="item-after"></div>
+                          </div>
+                        </a>
+                        </li>
+                         <li>
+                          <a href="#" class="item-link item-content">
+                          <div class="item-inner">
+                            <div class="item-title">
+                              <div class="item-header"><strong>Hotel</strong></div>
+                               Alamanda
+                            </div>
+                            <div class="item-after"></div>
+                          </div>
+                        </a>
+                        </li>
+                         <li>
+                          <a href="#" class="item-link item-content">
+                          <div class="item-inner">
+                            <div class="item-title">
+                              <div class="item-header"><strong>Harga</strong></div>
+                               Rp.250,000
+                            </div>
+                            <div class="item-after"></div>
+                          </div>
+                        </a>
+                        </li>
+                      </ul>
+                    </div>
+                   </div>
+                </div>
+              </li>
+            </ul>
+             </div> 
+        </div>
+        <div class="col-100 medium-20"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Required meta tags-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- Color theme for statusbar -->
+	<meta name="theme-color" content="#2196f3">
+	<!-- Your app title -->
+	<title>Cari Tanah</title>
+	<!-- Path to Framework7 Library Bundle CSS -->
+	<link rel="stylesheet" href="https://framework7.io/packages/core/css/framework7.bundle.min.css">
+	<link rel="stylesheet" href="https://yap.inweb.id/services/assets/f7/css/framework7-icons.css">
+	<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/css/ol.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<style>
+	/* change list style */
+	.list ul ul {
+		padding-left:10px;
+	}
+		
+	/* change scrollbar style*/
+	
+	body {
+		scrollbar-width: thin;
+		--f7-panel-transition-duration: 50ms;
+		--f7-menu-bg-color: var(--f7-theme-color)!important;		
+		--f7-menu-bg-color: #009688!important;		
+	}
+	
+	::-webkit-scrollbar {
+		width: 8px;
+		background-color: #eaeaea;
+	}
+	
+	/* fixed navbar to be ontop and only available in desktop, otherwise panel only available on phone */
+	
+	.navbar {
+		z-index: 9999!important;
+		background-color: var(--f7-theme-color)!important;
+		background-color: #009688!important;
+	}
+	
+	.navbar-inner {
+		overflow: visible!important;
+	}
+	
+	.menu {
+		z-index: 6000;
+	}
+
+	#main-navbar,
+	.title.card-header {
+		display: block;
+	}
+	
+	.view .navbar, 
+	.panel {
+		display: none!important;
+	}
+
+	.page-content {
+		padding-top:10px;
+		padding-bottom:60px;
+	}
+
+	.accordion-item {
+		padding-top:10px;
+		padding-bottom:10px;		
+		border-bottom:1px solid #eaeaea;
+	}
+	
+	@media only screen and (max-width:800px) {
+		#main-navbar,
+		.title.card-header  {
+			display: none;
+		}
+		.view .navbar,
+		.panel {
+			display: block!important;
+		}
+		.page-content {
+			padding-top:60px;
+		}
+	}
+
+	/* card style */	
+
+	.demo-card-header-pic .card-header {
+		height: 40vw;
+		max-height:100px;
+		background-size: cover;
+		background-position: center;
+		color: #fff;
+	}
+	
+	.demo-card-header-pic .card-content-padding .date{
+		color: #8e8e93;
+	}
+	
+	
+	</style>
+
+</head>
+
+<body class="color-theme-teal" >
+	<!-- Navbar web-->
+	<div id="main-navbar" class="navbar color-theme-white">
+		<div class="navbar-inner">
+
+			<!-- Toolbar links -->
+			<div class="left">
+				<a href="/index/" class="link"><img src="https://dev.dasmap.id/cloud/index.php/s/aq7PnKKbFbS9TPG/preview" style="max-height:40px;margin-right:20px;" ></a>
+
+				<!-- Menu container -->
+				<div class="menu">
+					<div class="menu-inner">
+						<!-- Single menu item -->
+						<!--
+						<a href="#" class="menu-item bg-color-teal elevation-3">
+						<div class="menu-item-content">Item 1</div>
+						</a>
+						-->
+
+
+						<!-- Menu item with dropdown -->
+						<!-- <div class="menu-item menu-item-dropdown">
+							<div class="menu-item-content">Jual</div> -->
+							<!-- Dropdown container -->
+							<!-- <div class="menu-dropdown menu-dropdown-left elevation-10"> -->
+								<!-- Dropdown content -->
+								<!-- <div class="menu-dropdown-content elevation-10"> -->
+								<!-- Dropdown link -->
+								<!-- <a href="/jual/tanah/" class="menu-dropdown-link menu-close">Jual Tanah</a>
+								<a href="/jual/rumah/" class="menu-dropdown-link menu-close">Jual Rumah</a>					 -->
+								<!-- Dropdown divider -->
+								<!-- <div class="menu-dropdown-divider"></div>
+								<a href="/ulasan-terjual/" class="menu-dropdown-link menu-close">Ulasan Terjual</a>
+								</div>
+							</div>
+						</div> -->
+
+						<!-- Menu item with dropdown -->
+						<!-- <div class="menu-item menu-item-dropdown">
+							<div class="menu-item-content">Beli</div> -->
+							<!-- Dropdown container -->
+							<!-- <div class="menu-dropdown menu-dropdown-center elevation-10"> -->
+								<!-- Dropdown content -->
+								<!-- <div class="menu-dropdown-content elevation-10"> -->
+								<!-- Dropdown link -->
+								<!-- <a href="/beli/tanah/" class="menu-dropdown-link menu-close">Beli Tanah</a>
+								<a href="/beli/rumah/" class="menu-dropdown-link menu-close">Beli Rumah</a>					 -->
+								<!-- Dropdown divider -->
+								<!-- <div class="menu-dropdown-divider"></div>
+								<a href="/ulasan-dibeli/" class="menu-dropdown-link menu-close">Ulasan Dibeli</a>
+								</div>
+							</div>
+						</div> -->
+
+					
+						
+					</div>
+
+				</div>
+
+			</div>
+			
+			<div class="right">
+				<a href="/cari-agen/" class="link">Cari Agen</a>
+				<a href="/login/" class="link">Masuk atau Daftar</a>
+				<a href="/beriklan/" class="link">Beriklan</a>
+				<a href="/blog/" class="link">Blog</a>
+				<div class="menu-item menu-item-dropdown">
+					<div class="menu-item-content">Aktivitas</div>
+					<!-- Dropdown container -->
+					<div class="menu-dropdown menu-dropdown-left elevation-10">
+						<!-- Dropdown content -->
+						<div class="menu-dropdown-content elevation-10">
+						<!-- Dropdown link -->
+						<a href="/pembayaran/" class="menu-dropdown-link menu-close">Pembayaran</a>
+						<a href="/riwayat/" class="menu-dropdown-link menu-close">Riwayat</a>					
+						
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+
+
+	<!-- App root element -->
+	<div id="app">
+		<!-- Statusbar overlay -->
+		<div class="statusbar"></div>
+
+		<div class="panel panel-left panel-reveal">
+			<!-- Top Navbar -->
+			<div class="navbar color-theme-white">
+				<div class="navbar-inner">
+					<div class="title"><a>Menu</a></div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="page-content">
+
+					<div class="list">
+						<ul>
+							
+							<li>
+								<div class="item-content">
+									<div class="item-media">
+										<img src="https://dev.dasmap.id/cloud/index.php/s/aq7PnKKbFbS9TPG/preview" style="max-height:40px;">
+									</div>
+									<div class="item-inner">
+										<div class="item-title">
+											<!-- Item header, must be first child of item-title 
+											<div class="item-header">Item header text</div> -->
+											<a href="/index/" class="link panel-close">Cari Tanah</a>
+											<!-- Item footer, must be last child of item-title -->
+											<div class="item-footer">Beranda / halaman depan</div>
+										</div>
+										<div class="item-after">...</div>
+									</div>
+
+								</div>
+							</li>
+
+							
+							<li>
+								<div class="item-content">
+									<div class="item-inner">	
+							
+										<div class="accordion-list list">				
+											<!--
+											<div class="accordion-item accordion-item-opened">
+												<div class="accordion-item-toggle">...</div>
+												<div class="accordion-item-content">...</div>
+											</div>
+											-->
+																		
+											<div class="accordion-item">
+												<div class="accordion-item-toggle">Jual</div>
+												<div class="accordion-item-content">
+													<div class="list">
+														<ul>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																	<div class="item-title">
+																		<!-- Item header, must be first child of item-title 
+																		<div class="item-header">Item header text</div> -->
+																		<a href="/jual/tanah/" class="link panel-close">Jual Tanah</a>
+																		<!-- Item footer, must be last child of item-title -->
+																		<div class="item-footer">Mulai jual tanah</div>
+																	</div>
+																	<div class="item-after">...</div>
+																	</div>
+
+																</div>
+															</li>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																	<div class="item-title">
+																		<!-- Item header, must be first child of item-title 
+																		<div class="item-header">Item header text</div> -->
+																		<a href="/jual/rumah/" class="link panel-close">Jual Rumah</a>
+																		<!-- Item footer, must be last child of item-title -->
+																		<div class="item-footer">Mulai jual rumah</div>
+																	</div>
+																	<div class="item-after">...</div>
+																	</div>
+
+																</div>
+															</li>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																	<div class="item-title">
+																		<!-- Item header, must be first child of item-title 
+																		<div class="item-header">Item header text</div> -->
+																		<a href="/ulasan-terjual/" class="link panel-close">Ulasan Terjual</a>
+																		<!-- Item footer, must be last child of item-title -->
+																		<div class="item-footer">Komentar para penjual</div>
+																	</div>
+																	<div class="item-after">...</div>
+																	</div>
+
+																</div>
+															</li>
+															
+														</ul>
+													</div>
+												</div>
+											</div>
+
+
+																				
+											<div class="accordion-item">									
+												<div class="accordion-item-toggle">Beli</div>
+												<div class="accordion-item-content">
+													<div class="list">
+														<ul>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																	<div class="item-title">
+																		<!-- Item header, must be first child of item-title 
+																		<div class="item-header">Item header text</div> -->
+																		<a href="/beli/tanah/" class="link panel-close">Beli Tanah</a>
+																		<!-- Item footer, must be last child of item-title -->
+																		<div class="item-footer">Informasi tanah yang bisa dibeli</div>
+																	</div>
+																	<div class="item-after">...</div>
+																	</div>
+
+																</div>
+															</li>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																	<div class="item-title">
+																		<!-- Item header, must be first child of item-title 
+																		<div class="item-header">Item header text</div> -->
+																		<a href="/beli/rumah/" class="link panel-close">Beli Rumah</a>
+																		<!-- Item footer, must be last child of item-title -->
+																		<div class="item-footer">Informasi rumah yang bisa dibeli</div>
+																	</div>
+																	<div class="item-after">...</div>
+																	</div>
+
+																</div>
+															</li>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																	<div class="item-title">
+																		<!-- Item header, must be first child of item-title 
+																		<div class="item-header">Item header text</div> -->
+																		<a href="/ulasan-dibeli/" class="link panel-close">Ulasan Dibeli</a>
+																		<!-- Item footer, must be last child of item-title -->
+																		<div class="item-footer">Komentar para pembeli</div>
+																	</div>
+																	<div class="item-after">...</div>
+																	</div>
+
+																</div>
+															</li>
+															
+														</ul>
+													</div>
+												</div>									
+											</div>
+											
+
+												
+											
+											
+											
+											
+										</div>
+
+												
+									</div>
+
+								</div>
+							</li>
+
+							
+							
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+									<div class="item-title">
+										<!-- Item header, must be first child of item-title 
+										<div class="item-header">Item header text</div> -->
+										<a href="/agen/cari/" class="link panel-close">Cari Agen</a>
+										<!-- Item footer, must be last child of item-title -->
+										<div class="item-footer">Mencari agen yang bisa membantu Anda</div>
+									</div>
+									<div class="item-after">...</div>
+									</div>
+
+								</div>
+							</li>
+
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+									<div class="item-title">
+										<!-- Item header, must be first child of item-title 
+										<div class="item-header">Item header text</div> -->
+										<a href="/login/" class="link panel-close">Masuk atau Daftar</a>
+										<!-- Item footer, must be last child of item-title -->
+										<div class="item-footer">Login menggunakan akun Anda</div>
+									</div>
+									<div class="item-after">...</div>
+									</div>
+
+								</div>
+							</li>
+
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+									<div class="item-title">
+										<!-- Item header, must be first child of item-title 
+										<div class="item-header">Item header text</div> -->
+										<a href="/beriklan/" class="link panel-close">Beriklan</a>
+										<!-- Item footer, must be last child of item-title -->
+										<div class="item-footer">Mulai pasang iklan</div>
+									</div>
+									<div class="item-after">...</div>
+									</div>
+
+								</div>
+							</li>
+							
+						</ul>
+					</div>
+
+				</div>
+			</div>
+				
+		</div>
+
+		<!-- Your main view, should have "view-main" class -->
+
+
+		<div class="view view-main view-init">
+
+			
+		</div>
+		<div id ="toolbar"class="toolbar tabbar toolbar-bottom">
+			<div class="toolbar-inner">
+			  <a href="/home/" class="tab-link">
+				<i class="icon material-icons md-only">house</i>
+				<span class="tabbar-label">Home</span>
+			  </a>
+			  <a href="/riwayat/" class="tab-link">
+				<i class="icon material-icons md-only"
+				  >list<span class="badge color-red">7</span></i
+				>
+				<span class="tabbar-label">Order</span>
+			  </a>
+			  <a href="/pembayaran/" class="tab-link">
+				<i class="icon f7-icons if-not-md"
+				  >money<span class="badge color-red">1</span></i
+				>
+				<i class="icon material-icons md-only"
+				  >money<span class="badge color-red">1</span></i
+				>
+				<span class="tabbar-label">Bayar</span>
+			  </a>
+			  <a href="/blog/" class="tab-link">
+				<i class="icon material-icons md-only">apartment</i>
+				<span class="tabbar-label">Blog</span>
+			  </a>
+			  <a href="/login/" class="tab-link">
+				<i class="icon material-icons md-only">person</i>
+				<span class="tabbar-label">Akun</span>
+			  </a>
+			</div>
+		  </div>
+
+	</div>
+
+
+	<div class="login-screen">
+		<div class="view">
+			<div class="page">
+				<div class="page-content login-screen-content">	
+					<div class="login-screen-title">Sign In</div>
+                              
+                                <div class="list">
+                                  <ul>
+                                    <li class="item-content item-input">
+                                      <div class="item-inner">
+                                        <div class="item-title item-label">Email</div>
+                                        <div class="item-input-wrap">
+                                        <input type="text" name="email" placeholder="Your Email">
+
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                      <div class="item-inner">
+                                        <div class="item-title item-label">Password</div>
+                                        <div class="item-input-wrap">
+                                          <input type="password" name="password" placeholder="Your password">
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="list">
+                                  <div class="block-footer">
+                                    <p><button id= "login" class="col button button-fill">Sign In</button></p>
+                                    <p><button class="col button button-fill">Sign Up</button></p>
+                                    <div class="footer_do">Do you forget password?
+                                    <a href="" class="footer_click"> Click here</a></div>
+                                  </div>
+                                  <div class="footer_logo">
+                                  <a class="link" href="#"> <img class="logo" src="img/fb.png"> </a>
+                                  <a class="link" href="#"> <img class="logo" src="img/google.png"> </a>
+                                  </div>    
+                                </div>
+                            
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- Path to Framework7 Library Bundle JS-->
+	<script type="text/javascript" src="https://framework7.io/packages/core/js/framework7.bundle.min.js"></script>
+	<script>
+		var $$ = Dom7;
+		var app = new Framework7({
+			// App root element
+			root: '#app',
+			// App Name
+			name: 'My App',
+			theme: 'md', //'aurora',
+			touch: {
+				disableContextMenu: true,
+			},
+			// App id
+			id: 'com.myapp.test',
+			view: {
+				pushState: true,
+				pushStateSeparator: '#',
+				//animate:false,
+			},
+
+			// Enable swipe panel
+			panel: {
+				swipe: 'left',
+				//leftBreakpoint: 468,
+			},
+			
+			// ... other parameters
+		});
+
+		var isLogin = false;
+		var loginScreen = app.loginScreen.create({el:'.login-screen'});
+		var login = function(page){
+			loginScreen.open();
+			$$('#login').off('click');
+			$$('#login').on('click',function(){
+				isLogin = true;
+				app.views.main.router.refreshPage();
+				console.log(page.name.substr(0,4),isLogin);
+				//app.views.main.router.navigate({ name: page.name });
+				loginScreen.close();
+			});
+		};
+		
+		const mainView = app.views.create('.view-main', {
+			// enable master detail
+
+			masterDetailBreakpoint: 600,
+
+			routes: [
+				{
+					name: 'index',
+					path: '/index/',
+					url: './home.html',
+					options: {
+						pushState: true,
+						reloadAll: true,
+					},					
+				},
+				{
+					name: 'home',
+					path: '/home/',
+					url: './home.html',
+					options: {
+						pushState: true,
+						reloadAll: true,
+					},				
+				},
+				{
+					name: 'beriklan',
+					path: '/beriklan/',
+					url: './beriklan.html',
+					options: {
+						pushState: true,
+						reloadAll: true,
+					},				
+				},
+				{
+					name: 'blog',
+					path: '/blog/',
+					url: './blog.html',
+					options: {
+						pushState: true,
+						reloadAll: true,
+					},				
+				},{
+					name: 'pembayaran',
+					path: '/pembayaran/',
+					url: './pembayaran.html',
+					options: {
+						pushState: true,
+						reloadAll: true,
+					},				
+				},{
+					name: 'pencarian',
+					path: '/pencarian/',
+					url: './pencarian-kamar.html',
+					options: {
+						pushState: true,
+						reloadAll: true,
+					},				
+				},
+				{
+					name: 'riwayat',
+					path: '/riwayat/',
+					url: './riwayat.html',
+					options: {
+						pushState: true,
+						reloadAll: true,
+					},				
+				},
+				{
+					name: 'akun',
+					//path: '/akun/',
+					path: '/login/',
+					url: './akun.html',
+					/*
+					options: {
+						pushState: false,
+					},
+					*/
+					// specify home route as master route
+					master: true,
+					on: {
+						//pageBeforeIn: function (e) {
+						pageInit: function (e) {						
+							var disp = $$('.panel').css('display');
+							if (disp == 'none')
+							{														
+								app.views.main.router.navigate({ name: 'akun-profil' });							
+							}						
+						}
+					},
+
+					// detail routes
+					detailRoutes: [
+						{
+							name: 'akun-profil',						
+							path: '/akun/profil/',
+							url: './akun-profil.html',
+							options: {
+								pushState: true,
+							},
+							on: {
+								//pageBeforeIn: function (e) {
+								pageInit: function (e) {
+									var html = $$('#toolbar').html();
+									$$('.page[data-name="akun-profil"]').append('<div class="toolbar tabbar toolbar-bottom">'+html+'</div>');
+														
+								}
+							},
+						},
+						{
+							name: 'akun-agen',						
+							path: '/akun/agen/',
+							url: './akun-agen.html',
+							options: {
+								pushState: true,
+							},
+							on: {
+								//pageBeforeIn: function (e) {
+								pageInit: function (e) {
+									var html = $$('#toolbar').html();
+									$$('.page[data-name="akun-agen"]').append('<div class="toolbar tabbar toolbar-bottom">'+html+'</div>');
+														
+								}
+							},
+						},{
+							name: 'akun-listing',						
+							path: '/akun/listing/',
+							url: './akun-listing.html',
+							options: {
+								pushState: true,
+							},
+							on: {
+								//pageBeforeIn: function (e) {
+								pageInit: function (e) {
+									var html = $$('#toolbar').html();
+									$$('.page[data-name="akun-listing"]').append('<div class="toolbar tabbar toolbar-bottom">'+html+'</div>');
+														
+								}
+							},
+						},{
+							name: 'akun-wishlist',						
+							path: '/akun/wishlist/',
+							url: './akun-wishlist.html',
+							options: {
+								pushState: true,
+							},
+							on: {
+								//pageBeforeIn: function (e) {
+								pageInit: function (e) {
+									var html = $$('#toolbar').html();
+									$$('.page[data-name="akun-wishlist"]').append('<div class="toolbar tabbar toolbar-bottom">'+html+'</div>');
+														
+								}
+							},
+						},{
+							name: 'akun-beriklan',						
+							path: '/akun/beriklan/',
+							url: './akun-beriklan.html',
+							options: {
+								pushState: true,
+							},
+							on: {
+								//pageBeforeIn: function (e) {
+								pageInit: function (e) {
+									var html = $$('#toolbar').html();
+									$$('.page[data-name="akun-beriklan"]').append('<div class="toolbar tabbar toolbar-bottom">'+html+'</div>');
+														
+								}
+							},
+						},{
+							name: 'akun-dashboard',						
+							path: '/akun/dashboard/',
+							url: './akun-dashboard.html',
+							options: {
+								pushState: true,
+							},
+							on: {
+								//pageBeforeIn: function (e) {
+								pageInit: function (e) {
+									var html = $$('#toolbar').html();
+									$$('.page[data-name="akun-dashboard"]').append('<div class="toolbar tabbar toolbar-bottom">'+html+'</div>');
+														
+								}
+							},
+						}
+					]
+				},			
+			]
+		});
+
+		
+		app.on('pageInit', function(page) {
+		//app.on('pageBeforeIn', function(page) {
+			console.log(page.name.substr(0,4),isLogin);
+			if (page.name.substr(0,4) == 'akun' && !isLogin)
+			{
+				login(page);
+				return;
+			}
+			else
+			{
+				loginScreen.close();
+			}
+		});
+
+		
+		app.views.main.router.navigate({ name: 'home' });
+		
+		
+		
+	</script>
+	<!-- Path to your app js
+	<script type="text/javascript" src="f7.js"></script>-->
+</body>
+
+</html>

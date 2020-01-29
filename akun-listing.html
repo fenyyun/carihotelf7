@@ -1,0 +1,326 @@
+<!-- Your main view, should have "view-main" class -->
+<div class="view view-init">
+  <!-- Initial Page, "data-name" contains page name -->
+  <div data-name="akun-listing" class="page">
+    <div class="navbar color-theme-white">
+      <div class="navbar-inner">
+        <a href="#" class="back link"><i class="icon icon-back"></i></a>
+        <div class="title"><a>Listing Saya</a></div>
+      </div>
+    </div>
+
+    <!-- Scrollable page content -->
+    <div class="page-content">
+       
+          <div class="block">
+            <div class="row no-gap">
+                <div class="col-100 medium-100">
+                  <div class="toolbar tabbar toolbar-above">
+                    <div class="toolbar-inner">
+                      <a href="#tab1" class="tab-link tab-link-active">
+                        <i class="icon demo-icon-1"></i>
+                        <span class="tabbar-label">Tambah Listing</span>
+                      </a>
+                      <a href="#tab2" class="tab-link">
+                        <i class="icon demo-icon-2"></i>
+                        <span class="tabbar-label">Listing Saya</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="tabs">
+                    <div id="tab-1" class="page-content tab tab-active">
+                      <div class="block">
+                        <div class="list no-hairlines-md">
+                          <ul>
+                              <li class="item-content item-input">
+                                  <!-- <div class="item-media">
+                                    <i class="icon demo-list-icon"></i>
+                                  </div> -->
+                                  <div class="item-inner">
+                                    <div class="item-title item-label">Foto</div>
+                                    <div class="item-label">
+                                      <button class="col button buton"><i class="icon material-icons md-only">camera_alt</i>  Tambah Foto Listing</button>
+                                    </div>
+                                  </div>
+                                </li>
+                            <li class="item-content item-input">
+                              <!-- <div class="item-media">
+                                <i class="icon demo-list-icon"></i>
+                              </div> -->
+                              <div class="item-inner">
+                                <div class="item-title item-label">Nama Properti</div>
+                                <div class="item-input-wrap">
+                                  <input type="text" class="place" placeholder="Tambahkan nama properti anda">
+                                  <span class="input-clear-button"></span>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="item-content item-input">
+                              <!-- <div class="item-media">
+                                <i class="icon demo-list-icon"></i>
+                              </div> -->
+                              <div class="item-inner">
+                                <div class="item-title item-label">KECAMATAN, KOTA, PROVINSI</div>
+                                <div class="item-title item-peta">KECAMATAN, KOTA, PROVINSI</div>
+                                <div class="item-title item-peta item-label">
+                                  <button class="col button"><i class="icon material-icons md-only">room</i>  Set Lokasi</button>
+                                </div>
+                              </div>
+                            </li>
+                          <li class="accordion-item"><a href="#" class="item-content item-link">
+                              <div class="item-inner">
+                                <div class="item-title">Tipe Properti</div>
+                              </div></a>
+                              <div class="accordion-item-content">
+                              <div class="block">
+                                  <div class="list">
+                                      <ul>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Books" checked />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Rumah</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Movies"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Hotel</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Food"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Properti</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                      
+                                      </ul>
+                                    </div>
+                              </div>
+                              </div>
+                          </li>
+                          <li class="accordion-item"><a href="#" class="item-content item-link">
+                              <div class="item-inner">
+                                <div class="item-title">Tipe Listing</div>
+                              </div></a>
+                              <div class="accordion-item-content item-label">
+                              <div class="block">
+                                  <div class="list">
+                                      <ul>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Books" checked />
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Standar Room</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Movies"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Superior Room</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Food"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Deluxe Room</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Drinks"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Junior Suit Room</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Drinks"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Suit Room</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-radio item-content">
+                                            <input type="radio" name="demo-radio" value="Drinks"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Presidential Suit</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                      </ul>
+                                    </div>
+                              </div>
+                              </div>
+                          </li>
+                          <li class="item-content item-input">
+                              <div class="item-inner">
+                                <div class="item-title item-floating-label">Ukuran Kamar</div>
+                                <div class="item-input-wrap">
+                                  <input type="text">
+                                  <span class="input-clear-button"></span>
+                                </div>
+                              </div>
+                              <div class="item-media">
+                                  <p>m2</p >
+                                </div>
+                          </li>
+                          <li class="accordion-item"><a href="#" class="item-content item-link">
+                              <div class="item-inner">
+                                <div class="item-title">Fasilitas Hotel</div>
+                              </div></a>
+                              <div class="accordion-item-content">
+                              <div class="block">
+                                  <div class="list">
+                                      <ul>
+                                        <li>
+                                          <label class="item-checkbox item-content">
+                                            <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>
+                                            <i class="icon icon-checkbox"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Wifi</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-checkbox item-content">
+                                            <input type="checkbox" name="demo-checkbox" value="Parkiran"/>
+                                            <i class="icon icon-checkbox"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Parkiran</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-checkbox item-content">
+                                            <input type="checkbox" name="demo-checkbox" value="Sarapan"/>
+                                            <i class="icon icon-checkbox"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Sarapan Pagi</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-checkbox item-content">
+                                            <input type="checkbox" name="demo-checkbox" value="Renang"/>
+                                            <i class="icon icon-checkbox"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Kolam Renang</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-checkbox item-content">
+                                            <input type="checkbox" name="demo-checkbox" value="Restoran"/>
+                                            <i class="icon icon-checkbox"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Restoran</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-checkbox item-content">
+                                            <input type="checkbox" name="demo-checkbox" value="Ac"/>
+                                            <i class="icon icon-checkbox"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Ac</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <label class="item-checkbox item-content">
+                                            <input type="checkbox" name="demo-checkbox" value="Lainnya"/>
+                                            <i class="icon icon-checkbox"></i>
+                                            <div class="item-inner">
+                                              <div class="item-title">Lainnya</div>
+                                            </div>
+                                          </label>
+                                        </li>
+                                      </ul>
+                                    </div>
+                              </div>
+                              </div>
+                          </li>
+                          <li class="item-content item-input">
+                              <!-- <div class="item-media">
+                                <i class="icon demo-list-icon"></i>
+                              </div> -->
+                              <div class="item-inner">
+                                <div class="item-title item-label">KODE POS</div>
+                                <div class="item-input-wrap">
+                                  <input type="text" class="place">
+                                  <span class="input-clear-button"></span>
+                                </div>
+                              </div>
+                          </li>
+                            <li class="item-content item-input">
+                              <!-- <div class="item-media">
+                                <i class="icon demo-list-icon"></i>
+                              </div> -->
+                              <div class="item-inner">
+                                <div class="item-title item-label">Durasi Iklan</div>
+                                <div class="item-input-wrap">
+                                  <input type="date" value="2014-04-30" placeholder="Please choose...">
+                                </div>
+                              </div>
+                            </li>
+                            <li class="item-content item-input">
+                              <!-- <div class="item-media">
+                                <i class="icon demo-list-icon"></i>
+                              </div> -->
+                              <div class="item-inner">
+                                <div class="item-title item-label">Link Iklan</div>
+                                <div class="item-input-wrap">
+                                  <input type="text" class="place" placeholder="Masukan alamat website iklan anda">
+                                  <span class="input-clear-button"></span>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                      </div>
+                      <div class="block">
+                          <div class="row">
+                            <button class="col button button-fill">Selesai</button>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div id="tab-2" class="page-content tab ">
+                      <div class="block">
+                        
+                      </div>
+                    </div>
+                  </div>
+                   
+                </div>
+            </div>
+
+
+          </div>
+       
+      
+    </div>
+  </div>
+</div>

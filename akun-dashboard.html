@@ -1,0 +1,330 @@
+
+
+<!-- Your main view, should have "view-main" class -->
+<div class="view view-init">
+  <!-- Initial Page, "data-name" contains page name -->
+  <div data-name="akun-dashboard" class="page">
+    <div class="navbar color-theme-white">
+      <div class="navbar-inner">
+        <a href="#" class="back link"><i class="icon icon-back"></i></a>
+        <div class="title"><a>Dashboard</a></div>
+      </div>
+    </div>
+
+    <!-- Scrollable page content -->
+    <div class="page-content">
+      <div class="card">
+        <div class="card-header">Dashboard</div>
+        <div class="card-content card-content-padding">
+            <div class="block">
+                <div class="row no-gap">
+                   <div class="col-100 medium-100">
+                         <div class="card  no-border">
+                           <div class="card-content card-content-padding no-border">
+                             <div id="map" class="map" style="height:300px;width: 100%;"></div>
+                                 <script>
+                                   var map = new ol.Map({
+                                   target: 'map',
+                                   layers: [
+                                     new ol.layer.Tile({
+                                       source: new ol.source.OSM()
+                                     })
+                                   ],
+                                   view: new ol.View({
+                                     center: ol.proj.fromLonLat([113.9213, -6.82]),
+                                     zoom: 4
+                                   })
+                                 });
+                                 </script>
+                           </div>
+                         </div>
+                         <div class ="block-title">Aktivitas Pengguna</div>
+                         <div class="card">
+                             <div class="card-content card-content-padding">
+                                 <canvas id="line-user-act" width="800" height="600"></canvas>
+                                   <script>
+                                     new Chart(document.getElementById("line-user-act"), {
+                                     type: 'line',
+                                     data: {
+                                       labels: [50,250,500,750,1000,1250],
+                                       datasets: [{ 
+                                           data: [86,114,106,106,107,111,133,221,783,2478],
+                                           label: "Total Pengguna Aktif",
+                                           borderColor: "#5e6f21",
+                                           fill: false
+                                         }, { 
+                                           data: [282,350,411,502,140,370,567],
+                                           label: "Jumlah Pengguna Baru",
+                                           borderColor: "#a2c22f",
+                                           fill: false
+                                         }, { 
+                                           data: [28,350,411,52,142,370,57],
+                                           label: "Jumlah Pengguna Baru",
+                                           borderColor: "#febe3f ",
+                                           fill: false
+                                         }
+
+                                       ]
+                                     },
+                                     options: {
+                                       title: {
+                                         display: true,
+                                         text: ''
+                                       }
+                                     }
+                                   });	
+                                     </script>
+                             </div>
+                         </div>
+                         <div class ="block-title">Lama Pemesanan</div>
+                         <div class="card">
+                           <div class="card-content card-content-padding">
+                               <canvas id="stacked-chart"  width="800" height="600"></canvas>
+                                 <script>
+                                   var ctx = document.getElementById('stacked-chart');
+                                   var myChart = new Chart(ctx, {
+                                                       type: 'bar',
+                                                       data: {
+                                                           labels: [ 'Jul', 'Agst', 'Sep', 'Okt', 'Nov', 'Des'],
+                                                           datasets: [{
+                                                               label: 'Hotel',
+                                                               backgroundColor: '#5e6f21',
+                                                               data: [
+                                                                   66,
+                                                                   93,
+                                                                   31,
+                                                                   76,
+                                                                   39,
+                                                                   75,
+                                                                   36
+                                                               ]
+                                                           }, {
+                                                               label: 'Motel',
+                                                               backgroundColor: '#a2c22f',
+                                                               data: [
+                                                                   76,
+                                                                   203,
+                                                                   41,
+                                                                   86,
+                                                                   49,
+                                                                   85,
+                                                                   46
+                                                               ]
+                                                           }, {
+                                                               label: 'Kosan',
+                                                               backgroundColor:'#bff500',
+                                                               data: [
+                                                                   76,
+                                                                   103,
+                                                                   41,
+                                                                   86,
+                                                                   49,
+                                                                   85,
+                                                                   46
+                                                               ]
+                                                           }, {
+                                                               label: 'Apartmen',
+                                                               backgroundColor: '#febe3f ',
+                                                               data: [
+                                                                   56,
+                                                                   56,
+                                                                   83,
+                                                                   21,
+                                                                   66,
+                                                                   29,
+                                                                   65
+                                                               ]
+                                                           }      
+                                                           ]
+                                                       },
+                                                       options: {
+                                                         title: {
+                                                           display: true,
+                                                           text: 'Kategori Penginapan'
+                                                         },
+                                                           scales: {
+                                                           xAxes: [{ stacked: true }],
+                                                           yAxes: [{ stacked: true }]
+                                                       }
+
+
+
+                                                       }
+                                                       });
+                                   </script>
+                           </div>
+                         </div>
+                         <div class ="block-title">Perbandingan Transaksi Berhasil dan Pembatalan</div>
+                         <div class="card">
+                             <div class="card-content card-content-padding">
+                                 <canvas id="line-transaction" width="800" height="600"></canvas>
+                                   <script>
+                                     new Chart(document.getElementById("line-transaction"), {
+                                     type: 'line',
+                                     data: {
+                                       labels: [500,2500,5000,7500,10000,12500],
+                                       datasets: [{ 
+                                           data: [8600,11004,1006,1006,1007,1101,1303,22001,7083,24078],
+                                           label: "Transaksi Berhasil",
+                                           borderColor: "#5e6f21",
+                                           fill: false
+                                         }, { 
+                                           data: [28,350,411,52,142,370,57],
+                                           label: "Transaksi Batal",
+                                           borderColor: "#febe3f ",
+                                           fill: false
+                                         }
+
+                                       ]
+                                     },
+                                     options: {
+                                       title: {
+                                         display: true,
+                                         text: ''
+                                       }
+                                     }
+                                   });	
+                                     </script>
+                             </div>
+                         </div>
+                        
+                   </div>
+                 </div> 
+               <div class="row no-gap">
+                 <div class="col-100 medium-100">
+                     <div class="list accordion-list">
+                         <ul>
+                           <li class="accordion-item"><a href="#" class="item-content item-link">
+                               <div class="item-inner">
+                                 <div class="item-title">Sort & Filter</div>
+                               </div></a>
+                             <div class="accordion-item-content">
+                               <div class="block">
+                                 <div class="block-title">
+                                     Kategori Penginapan
+                                 </div>
+                                 <div class="list">
+                                     <ul>
+                                     <li>
+                                         <label class="item-checkbox item-content">
+                                         <input
+                                             type="checkbox"
+                                             name="demo-checkbox"
+                                             value="Books"
+                                             checked="checked"
+                                         />
+                                         <i class="icon icon-checkbox"></i>
+                                         <div class="item-inner">
+                                             <div class="item-title">Hotel</div>
+                                         </div>
+                                         </label>
+                                     </li>
+                                     <li>
+                                         <label class="item-checkbox item-content">
+                                         <input type="checkbox" name="demo-checkbox" value="Movies" />
+                                         <i class="icon icon-checkbox"></i>
+                                         <div class="item-inner">
+                                             <div class="item-title">Motel</div>
+                                         </div>
+                                         </label>
+                                     </li>
+                                     <li>
+                                         <label class="item-checkbox item-content">
+                                         <input type="checkbox" name="demo-checkbox" value="Food" />
+                                         <i class="icon icon-checkbox"></i>
+                                         <div class="item-inner">
+                                             <div class="item-title">Kosan</div>
+                                         </div>
+                                         </label>
+                                     </li>
+                                     <li>
+                                         <label class="item-checkbox item-content">
+                                         <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                                         <i class="icon icon-checkbox"></i>
+                                         <div class="item-inner">
+                                             <div class="item-title">
+                                             Apartment
+                                             </div>
+                                         </div>
+                                         </label>
+                                     </li>
+                                     </ul>
+                                 </div>
+                                 <div class="block-title">Tanggal Dataset</div>
+                                 <div class="list no-hairlines-md">
+                                     <ul>
+                                     <li>
+                                         <div class="item-content item-input">
+                                         <div class="item-inner">
+                                             <div class="item-input-wrap">
+                                             <input
+                                                 type="text"
+                                                 placeholder="Rentang tanggal"
+                                                 readonly="readonly"
+                                                 id="demo-calendar-range"
+                                             />
+                                             </div>
+                                         </div>
+                                         </div>
+                                     </li>
+                                     </ul>
+                                 </div>
+                                 <div class="block-title">Total Transaksi</div>
+                                 <div class="list no-hairlines-md">
+                                     <ul>
+                                     <li class="item-content item-input">
+                                         <div class="item-inner">
+                                         <div class="item-title item-floating-label">
+                                             Transaksi Minimum
+                                         </div>
+                                         <div class="item-input-wrap">
+                                             <input
+                                             type="number"
+                                             placeholder="(Contoh: 10000000)"
+                                             />
+                                             <span class="input-clear-button"></span>
+                                         </div>
+                                         </div>
+                                     </li>
+                                     <li class="item-content item-input">
+                                         <div class="item-inner">
+                                         <div class="item-title item-floating-label">
+                                             Transaksi Maksimum
+                                         </div>
+                                         <div class="item-input-wrap">
+                                             <input
+                                             type="number"
+                                             placeholder="(Contoh: 100000000)"
+                                             />
+                                             <span class="input-clear-button"></span>
+                                         </div>
+                                         </div>
+                                     </li>
+                                     </ul>
+                                 </div>
+                               </div>
+                               <br>
+                               <div class="block">
+                                 <div class="row">
+                                   <button class="col-30 button button-outline">Reset</button>
+                                   <button class="col-35 button button-fill">Terapkan</button>
+                                 </div>
+                               </div>
+                               <br>
+                             </div>
+                           </li>
+                         </ul>
+                      </div> 
+                  </div>
+               </div>
+
+            
+               
+                  
+                
+             </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
